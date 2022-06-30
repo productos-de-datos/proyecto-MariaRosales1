@@ -63,7 +63,10 @@ class computeMonthlyPrices(luigi.Task):
     def run(self):
         compute_monthly_prices()
 
-
+def pipeline():
+    luigi.build([createStructure(), ingestData(), transformData(), cleanData(), computeDailyPrices(), computeMonthlyPrices() ],  local_scheduler=True)
 
 if __name__ == "__main__":
-    luigi_run_result = luigi.build([createStructure(), ingestData(), transformData(), cleanData(), computeDailyPrices(), computeMonthlyPrices() ],  local_scheduler=True)
+    import doctest
+    pipeline()
+    doctest.testmod()
