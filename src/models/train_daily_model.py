@@ -30,8 +30,9 @@ def train_daily_model():
 
 
     # # GridSearchCV
-
-
+    X_test["y"] = y_true_test 
+    X_test.to_csv('data_lake/business/forecasts/dataToForecast.csv')
+    
     model = MLPRegressor(max_iter= 100,
         activation='identity', 
         solver= 'adam', 
@@ -51,8 +52,6 @@ def train_daily_model():
                           param_grid=param_grid, cv=5) 
 
     dataTrain = grid_search.fit(X_train, y_true_train)
-
-  
 
     parent_dir = "src/models"
     cwd = os.getcwd()
