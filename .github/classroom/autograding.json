@@ -123,7 +123,7 @@
     {
       "name": "Test 13",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "pylint src/visualization/make_daily_prices_plot.py",
+      "run": "pylint src/*/*.py",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -133,7 +133,7 @@
     {
       "name": "Test 14",
       "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
-      "run": "pytest",
+      "run": "python3 -m doctest -v src/data/compute_daily_prices.py",
       "input": "",
       "output": "",
       "comparison": "included",
